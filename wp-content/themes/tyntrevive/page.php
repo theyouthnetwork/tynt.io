@@ -10,9 +10,7 @@
  * @package revive
  */
 
-session_start();
-
-if ($_SESSION["site-passwd"] == 'passtynt' || $_SERVER['REQUEST_URI'] == '/index.php' || $_SERVER['REQUEST_URI'] == '/')
+if ($_COOKIE["site-passwd"] == 'passtynt' || $_SERVER['REQUEST_URI'] == '/index.php' || $_SERVER['REQUEST_URI'] == '/')
 {
 get_header();
 }

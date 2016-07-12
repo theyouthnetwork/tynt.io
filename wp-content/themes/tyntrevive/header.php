@@ -6,8 +6,20 @@
  *
  * @package revive
  */
-session_start();
-?><!DOCTYPE html>
+
+if ($_SERVER['REQUEST_URI'] == '/index.php' || $_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '')
+{
+	setcookie('site-passwd', $_POST["passwd"], time() + 3600, '/'); 
+
+	if (isset($_COOKIE['site-passwd']) && $_COOKIE['site-passwd'] == "passtynt")
+	{ 
+		header('location:http://stage.tynt.io/blog/');
+	}
+
+}
+
+?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -41,7 +53,7 @@ session_start();
 			<div class="site-branding">
 				<?php if ( get_theme_mod('revive_logo') != "" ) : ?>
 				<div id="site-logo">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_mod('revive_logo') ); ?>"></a>
+					<a href="http://stage.tynt.io/blog/"><img src="<?php echo esc_url( get_theme_mod('revive_logo') ); ?>"></a>
 				</div>
 				<?php endif; ?>
 				<div id="text-title-desc">

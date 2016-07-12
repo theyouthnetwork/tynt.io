@@ -11,16 +11,13 @@
  * @package revive
  */
 
-session_start();
-
-if ($_SESSION["site-passwd"] == 'passtynt' || $_SERVER['REQUEST_URI'] == '/index.php' || $_SERVER['REQUEST_URI'] == '/')
+if ($_COOKIE["site-passwd"] == 'passtynt' || $_SERVER['REQUEST_URI'] == '/index.php' || $_SERVER['REQUEST_URI'] == '/')
 {
 get_header();                                                                                            
 }
 else                                                                                                     
 {
-header('location:http://stage.tynt.io/');                                                                 
-}
+header('location:http://stage.tynt.io/');                                                                }
 ?>
 	<div id="primary" class="content-areas <?php do_action('revive_primary-width') ?>">
 		<main id="main" class="site-main" role="main">

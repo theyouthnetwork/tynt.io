@@ -1,3 +1,4 @@
+<!--Obsolete page-->
 <div id="featured-area-2">
 <div class="container">
 <?php if ( get_theme_mod('revive_fa2_enable') && is_front_page() ) : ?>
