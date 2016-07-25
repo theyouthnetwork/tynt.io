@@ -1,4 +1,3 @@
-<!--Obsolete page-->
 <div id="featured-area-2">
 <div class="container">
 <?php if ( get_theme_mod('revive_fa2_enable') && is_front_page() ) : ?>
@@ -15,7 +14,7 @@
 					foreach ( $lastposts as $post ) :
 					  setup_postdata( $post ); ?>
 					
-				    <div class="col-md-3 col-sm-6 col-xs-6 imgcontainer">
+				    <div class="col-md-4 col-sm-6 col-xs-6 imgcontainer">
 				    	
 				    	<?php 
 				    		$thumb = 'revive-revive-pop-thumb-half'; 
@@ -29,7 +28,9 @@
 								<a href="<?php the_permalink() ?>" title="<?php the_title() ?>"><img src="<?php echo get_template_directory_uri()."/assets/images/placeholder2.jpg"; ?>"></a>
 						<?php endif; ?>
 							<div class="titledesc">
-					            <h2><a href="<?php the_permalink() ?>"><?php echo the_title(); ?></a></h2>
+					            <h2><a href="<?php the_permalink() ?>"><span><?php the_time('j'); ?></span>
+			            	<span><?php the_time('M'); ?></span> 2016<br></br><?php echo the_title(); ?></a>
+ </h2>
 					        </div>
 				    	</div>	
 				        

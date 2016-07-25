@@ -7,13 +7,13 @@
  * @package revive
  */
 
-if ($_SERVER['REQUEST_URI'] == '/index.php' || $_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '')
+if ($_SERVER['REQUEST_URI'] == '/password/')
 {
 	setcookie('site-passwd', $_POST["passwd"], time() + 3600, '/'); 
 
 	if (isset($_COOKIE['site-passwd']) && $_COOKIE['site-passwd'] == "passtynt")
 	{ 
-		header('location:http://stage.tynt.io/blog/');
+		header('location:http://stage.tynt.io/');
 	}
 
 }
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_URI'] == '/index.php' || $_SERVER['REQUEST_URI'] == '/' ||
 				<div id="text-title-desc">
 				<h1 class="site-title title-font"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-				<form id="site-passwd-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+				<form id="site-passwd-form" method="post" action="/password/">
 					<input type="password" id="passwd" name="passwd" value="<?php echo $passwd;?>" placeholder="What is your secret">
 					<input type="submit" name="submit" id="submit" value="Submit">
 				</form>
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_URI'] == '/index.php' || $_SERVER['REQUEST_URI'] == '/' ||
 					if (isset($passwd) && $passwd=="passtynt") :
 				?>
 		 		<script type="text/javascript">
-					window.location.href = "http://stage.tynt.io/blog/"; 
+					window.location.href = "http://stage.tynt.io/"; 
 				</script>
 				<?php endif; ?>
 				</div>
@@ -91,6 +91,7 @@ if ($_SERVER['REQUEST_URI'] == '/index.php' || $_SERVER['REQUEST_URI'] == '/' ||
 	<div class="mega-container">
 			
 		<?php get_template_part('featured', 'area1'); ?>
+<p id="articles"></p>
 		<?php get_template_part('featured', 'area2'); ?>
 		
 		<?php get_template_part('slider', 'nivo' ); ?>
