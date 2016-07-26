@@ -14,10 +14,10 @@
 					foreach ( $lastposts as $post ) :
 					  setup_postdata( $post ); ?>
 					
-				    <div class="col-md-4 col-sm-6 col-xs-6 imgcontainer">
+				    <div class="col-md-4 col-sm-6 imgcontainer">
 				    	
 				    	<?php 
-				    		$thumb = 'revive-revive-pop-thumb-half'; 
+				    		$thumb = 'revive-pop-thumb'; 
 							if ($count == 0) $thumb = 'revive-pop-thumb';
 				    	?>
 				    
