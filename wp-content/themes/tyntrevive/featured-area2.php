@@ -27,11 +27,15 @@
 						<?php else : ?>
 								<a href="<?php the_permalink() ?>" title="<?php the_title() ?>"><img src="<?php echo get_template_directory_uri()."/assets/images/placeholder2.jpg"; ?>"></a>
 						<?php endif; ?>
-							<div class="titledesc">
-					            <h2><a href="<?php the_permalink() ?>"><span><?php the_time('j'); ?></span>
-			            	<span><?php the_time('M'); ?></span> 2016<br></br><?php echo the_title(); ?></a>
- </h2>
-					        </div>
+						<div class="titledesc">
+						<h2><a href="<?php the_permalink() ?>"
+							<span><?php the_time('j'); ?></span>
+			            			<span><?php the_time('M'); ?></span>
+							<span><?php the_time('Y'); ?></span></a></h2>
+					        <h2><a href="<?php the_permalink() ?>"><?php echo the_title(); ?></a></h2>
+					        
+            					<h2><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><span><?php echo get_avatar() ?></span>&nbsp&nbsp<?php the_author() ?></a></h2>
+					</div>
 				    	</div>	
 				        
 				    </div>
