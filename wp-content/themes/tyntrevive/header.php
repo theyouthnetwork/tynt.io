@@ -3,7 +3,7 @@
  * The header for our theme.
  *
  * Displays all of the <head> section and everything up till <div id="content">
- *
+ *i
  * @package revive
  */
 
@@ -40,7 +40,9 @@ if ($_SERVER['REQUEST_URI'] == '/password/')
 		</div>
 	</div>	
 	
+<div id="top"></div>
 	<div id="top-bar">
+
 		<div class="container">
 			<div id="top-menu">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
@@ -84,6 +86,7 @@ if ($_SERVER['REQUEST_URI'] == '/password/')
 		
 	</header><!-- #masthead -->
 	
+<div id="articles"></div>
 	<div id="social-icons">
 		<?php get_template_part('social', 'fa'); ?>
 	</div>
@@ -91,9 +94,8 @@ if ($_SERVER['REQUEST_URI'] == '/password/')
 	<div class="mega-container">
 			
 		<?php get_template_part('featured', 'area1'); ?>
-<p id="articles"></p>
 		<?php get_template_part('featured', 'area2'); ?>
 		
 		<?php get_template_part('slider', 'nivo' ); ?>
-	
+<div id="back-top"><a href="#top"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/back-top.png"; ?>" height="100" width="100"></a></div>
 		<div id="content" class="site-content container">

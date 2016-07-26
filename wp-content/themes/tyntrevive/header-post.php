@@ -38,7 +38,13 @@
 			</div>
 		</div>
 	</div>
-	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="container">
+			<div id="featured-image">
+			<?php the_post_thumbnail('full'); ?>
+			</div>
+		</div>
+	</header>
 
 	<div class="mega-container">
 			
