@@ -95,3 +95,6 @@ wp-content/themes/twenty*
 #!wp-content/plugins/
 #wp-content/plugins/
 
+
+## TYNT repo specific allows
+!.devops
