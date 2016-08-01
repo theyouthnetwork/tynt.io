@@ -46,6 +46,9 @@
 # track readme.md in the root (i.e. do NOT ignore it)
 !readme.md
 
+# composer.json might be useful
+!composer.json
+
 # ignore all files that start with ~
 ~*
 
@@ -86,13 +89,9 @@ Thumbs.db
 # "themes" directory
 wp-content/*
 !wp-content/themes/
-#!wp-content/plugins/
+wp-content/themes/twenty*
 
 # ignore these plugins
+#!wp-content/plugins/
 #wp-content/plugins/
-
-# ignore specific themes
-wp-content/themes/twenty*
-#wp-content/themes/revive/
-
 
