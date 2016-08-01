@@ -92,6 +92,6 @@ wp-content/*
 #wp-content/plugins/
 
 # ignore specific themes
-wp-content/themes/revive/
+#wp-content/themes/revive/
 wp-content/themes/sketch/
 
