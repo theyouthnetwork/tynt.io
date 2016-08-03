@@ -1,0 +1,153 @@
+/*##########################
+top-menu
+##########################*/
+
+.page-id-57 #top-bar {
+display: none;
+}
+
+#top-menu ul li {
+    border-right: none !important;
+   
+}
+
+@media (min-width: 768px){
+#top-menu {
+    width: 270px;
+   float: none !important;
+    margin-left: auto;
+margin-right: auto;
+
+}
+}
+
+@media (min-width: 992px) {
+#top-menu {
+position:fixed;
+    width: 270px;
+   float: none !important;
+    margin-left: auto;
+margin-right: auto;
+}
+}
+
+#top-bar .container {
+position: fixed;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+background:#F2F2F2;
+opacity:0.75;
+width: 100% !important;
+z-index:1;
+}
+
+#top-menu ul li a {
+    display: inline-block;
+    color: #36454f;
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+/*##########################
+password page
+##########################*/
+#site-passwd-form {
+margin-top:36px;
+display: none;
+}
+
+.page-id-57 #site-passwd-form {
+display: block;
+}
+
+.page-id-57 .mega-container {
+display: none;
+}
+
+/*##########################
+header
+##########################*/
+.page-id-57 .site-branding {
+margin-top: 120px;
+}
+
+.page-id-69 .site-branding {
+margin-top: 120px;
+}
+
+.site-branding {
+    margin-bottom: 80px;
+    padding:0px;
+}
+
+#social-icons {
+display: none;
+}
+
+.page-id-57 #social-icons {
+display: block;
+}
+
+#search-icon {
+display: none;
+}
+
+.page-id-69 #search-icon {
+display: block;
+}
+
+#masthead {
+background-position-y: center;
+}
+
+.page-id-57 #masthead {
+min-height: 640px;
+}
+
+.page-id-69 #masthead {
+min-height: 640px;
+}
+
+
+
+/*##########################
+others
+##########################*/
+
+.comment-author {
+    width: 8%;
+}
+
+.entry-footer{
+display:none;
+}
+
+#site-navigation {
+display: none;
+}
+
+#featured-area-2 .section-title {
+    display: none;
+}
+
+
+
+
+
+/*##########################
+still testing
+##########################*/
+.mega-container {
+    width:100% !important;
+    max-width: none !important;
+}
+
+@media (min-width: 1450px){
+.page-id-69 #featured-area-2 .container {
+    min-width: 1440px;
+}
+}
+
