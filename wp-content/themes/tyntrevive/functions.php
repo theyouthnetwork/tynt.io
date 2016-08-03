@@ -21,7 +21,7 @@ function my_theme_enqueue_styles() {
     wp_enqueue_script('top-menu-script', get_stylesheet_directory_uri() . '/js/top-menu-update.js', array());
 }
 
-# Code from http://vanweerd.com/enhancing-your-wordpress-3-menus/#add_login
+// Code from http://vanweerd.com/enhancing-your-wordpress-3-menus/#add_login
 add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
 
 function add_login_logout_link($items, $args) {
@@ -35,5 +35,25 @@ function add_login_logout_link($items, $args) {
 
 	return $items;
 }
-?>
 
+
+/**
+ * Password checker hook
+ * Todo: abstract the page URI to be configuratble or something
+ * Todo: store the password NOT IN PLAIN TEXT
+ */
+function tynt_password_check() {
+
+    if ( $_COOKIE["site-passwd"] == 'passtynt' && preg_match('#/password/?#', $_SERVER['REQUEST_URI']) ){
+        // header('location:http://stage.tynt.io/');
+        wp_redirect( home_url( '/', 'https' ) );
+        exit;
+    }
+    elseif ( !($_COOKIE["site-passwd"] == 'passtynt' || preg_match('#/password/?#', $_SERVER['REQUEST_URI'])) ){
+        // header('location:http://stage.tynt.io/password'); 
+        wp_redirect( home_url( '/password', 'https' ) );     
+        exit;
+    }
+
+}
+add_action( 'init', 'tynt_password_check' );
