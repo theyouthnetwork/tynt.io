@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
 DIRNAME=`dirname $0` 
+CWD=`pwd`
 ME=`whoami`
 
-GHL_DIRNAME='github-webhook-listener'
-GHL_PATH="$DIRNAME/../src/$GHL_DIRNAME"
-
 LISTENER_HOME='/opt/listeners'
+
+GHL_DIRNAME='github-webhook-listener'
+GHL_SRC_PATH="$DIRNAME/../src/$GHL_DIRNAME"
+GHL_TARGET_PATH="$LISTENER_HOME/$GHL_DIRNAME"
+
 
 ## Expecting the linux box not to have drop of nodejs on it
 
@@ -18,18 +21,19 @@ echo Done.
 
 echo -ne Preparing listener home directory... 
 sudo mkdir -p "$LISTENER_HOME"
-chmod -R $ME:$ME "$LISTENER_HOME"
+sudo chown -R $ME:$ME "$LISTENER_HOME"
 echo Done.
 
 ## So by now, this (girl has no name) should be able to write to the listener folder
 echo -ne Installing GitHub webhook listener... 
-cp -R "$GHL_PATH" "$LISTENER_HOME"
-cd "$GHL_PATH"
+cp -R "$GHL_SRC_PATH" "$LISTENER_HOME"
+cd "$GHL_TARGET_PATH"
 npm install
 echo Done.
 
 echo -ne Running listener via PM2... 
-$GHL_PATH/up.sh
+$GHL_TARGET_PATH/up.sh
+cd "$CWD"
 echo Done.
 
 ## Apache tinkerations
@@ -52,7 +56,8 @@ sudo a2enmod proxy_http
 echo Done.
 
 echo -ne Drop in our reverse proxy, include it from main file... 
-sed -i.bak "s/<VirtualHost.*>/&\nInclude sites-available\/${RPROXY_FILE}/" "$DEFAULT_FILE_PATH" && rm "${DEFAULT_FILE_PATH}.bak"
+sudo sed -i.bak "s/<VirtualHost.*>/&\nInclude sites-available\/${RPROXY_FILE}/" "$DEFAULT_FILE_PATH"
+sudo rm -f "${DEFAULT_FILE_PATH}.bak"
 sudo cp "$RPROXY_FILE_PATH" "$APACHE_CONF/$APACHE_SITES_DROPIN_DIRNAME"
 echo Done.
 
