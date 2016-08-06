@@ -96,5 +96,5 @@ wp-content/themes/twenty*
 #wp-content/plugins/
 
 
-## TYNT repo specific allows
+# Allow the .devops folder into the repo
 !.devops
