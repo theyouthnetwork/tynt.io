@@ -26,6 +26,8 @@ add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
 
 function add_login_logout_link($items, $args) {
 
+        // AY: Probably better to use wp_login_url() or wp_logout_url() ??
+
 		ob_start();
 		wp_loginout('index.php');
 		$loginoutlink = ob_get_contents();
@@ -43,17 +45,27 @@ function add_login_logout_link($items, $args) {
  * Todo: store the password NOT IN PLAIN TEXT
  */
 function tynt_password_check() {
-
-    if ( $_COOKIE["site-passwd"] == 'passtynt' && preg_match('#/password/?#', $_SERVER['REQUEST_URI']) ){
-        // header('location:http://stage.tynt.io/');
-        wp_redirect( home_url( '/', 'https' ) );
-        exit;
+    if ( is_home() || is_single() || is_page() ){
+        
+        $is_correct_pass = !empty( $_COOKIE['site-passwd'] ) && $_COOKIE['site-passwd'] == 'passtynt';
+        $is_password_block_page = preg_match( '#/password/?#', $_SERVER['REQUEST_URI'] );
+        
+        if ( $is_correct_pass ){
+            if ( $is_password_block_page ){
+                // header('location:http://stage.tynt.io/');
+                wp_redirect( home_url( '/', 'https' ) );
+                exit;
+            }
+            else {
+                return;       
+            }
+        }
+        elseif ( !$is_password_block_page ){
+            // header('location:http://stage.tynt.io/password'); 
+            wp_redirect( home_url( '/password', 'https' ) );                // Todo: remove this URL hardcoding
+            exit;
+        }
+        
     }
-    elseif ( !($_COOKIE["site-passwd"] == 'passtynt' || preg_match('#/password/?#', $_SERVER['REQUEST_URI'])) ){
-        // header('location:http://stage.tynt.io/password'); 
-        wp_redirect( home_url( '/password', 'https' ) );     
-        exit;
-    }
-
 }
 add_action( 'init', 'tynt_password_check' );
