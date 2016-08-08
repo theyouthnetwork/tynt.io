@@ -1,3 +1,9 @@
+@font-face {
+    font-family: Akkurat; 
+    src: url(../fonts/Akkurat-Light-Regular.otf); 
+    font-weight: normal; 
+}
+
 /*##########################
 #top-menu
 ##########################*/
@@ -252,13 +258,5 @@ border-top: solid 1px rgb(238, 238, 238);
 
 #primary-mono .entry-meta span img {
     width: 14px;
-}
-
-
-
-@font-face {
-    font-family: Akkurat; 
-    src: url(http://stage.tynt.io/wp-content/themes/tyntrevive/fonts/Akkurat-Light-Regular.otf); 
-    font-weight: normal; 
 }
 

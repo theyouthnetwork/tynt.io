@@ -40,15 +40,29 @@ function add_login_logout_link($items, $args) {
 
 
 /**
- * Password checker hook
+ * Password checker hook. Checks for a password submission, and also determines
+ * access to the page based on password or no.
  * Todo: abstract the page URI to be configuratble or something
  * Todo: store the password NOT IN PLAIN TEXT
  */
 function tynt_password_check() {
-    if ( is_home() || is_single() || is_page() ){
+    
+    $is_correct_pass = !empty( $_COOKIE['site-passwd'] ) && $_COOKIE['site-passwd'] == 'passtynt';
+    $is_password_block_page = preg_match( '#/password/?#', $_SERVER['REQUEST_URI'] );    
+    
+    // We will want to do a hard redirect, to avoid browser messages about double-posting.
+    // Then redirect them to original destination, or if unknown go to homepage
+    if ( !empty( $_POST["passwd"] ) && $is_password_block_page ){
+        setcookie('site-passwd', $_POST["passwd"], time() + 3600, '/'); 
+        if ( $_POST['onward'] ){
+            wp_redirect( home_url( $_POST['onward'], 'https' ) );
+            exit;
+        }
+        wp_redirect( home_url( '/', 'https' ) );
+        exit;
+    }
         
-        $is_correct_pass = !empty( $_COOKIE['site-passwd'] ) && $_COOKIE['site-passwd'] == 'passtynt';
-        $is_password_block_page = preg_match( '#/password/?#', $_SERVER['REQUEST_URI'] );
+    if ( is_home() || is_single() || is_page() ){
         
         if ( $is_correct_pass ){
             if ( $is_password_block_page ){
@@ -60,12 +74,14 @@ function tynt_password_check() {
                 return;       
             }
         }
-        elseif ( !$is_password_block_page ){
+        elseif ( !$is_password_block_page ){ 
             // header('location:http://stage.tynt.io/password'); 
-            wp_redirect( home_url( '/password', 'https' ) );                // Todo: remove this URL hardcoding
+            wp_redirect( home_url( '/password/', 'https' ) . '?onward='.urlencode($_SERVER['REQUEST_URI']) );                // Todo: remove this URL hardcoding to /password/
             exit;
         }
         
     }
+    
 }
-add_action( 'init', 'tynt_password_check' );
+add_action( 'posts_selection', 'tynt_password_check' );
+// add_action( 'init', 'tynt_password_check' );

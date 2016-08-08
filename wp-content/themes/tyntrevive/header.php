@@ -7,16 +7,21 @@
  * @package revive
  */
 
-if ($_SERVER['REQUEST_URI'] == '/password/')
-{
-	setcookie('site-passwd', $_POST["passwd"], time() + 3600, '/'); 
+// if ($_SERVER['REQUEST_URI'] == '/password/')
+// {
+	// setcookie('site-passwd', $_POST["passwd"], time() + 3600, '/'); 
 
-	if (isset($_COOKIE['site-passwd']) && $_COOKIE['site-passwd'] == "passtynt")
-	{ 
-		header('location:http://stage.tynt.io/');
-	}
+    /**
+     * Bear in mind that the password to your website is on a public GitHub repository...
+     * This stuff is now moved into an action hook
+     */
+    
+	// if (isset($_COOKIE['site-passwd']) && $_COOKIE['site-passwd'] == "passtynt")
+	// { 
+		// header('location:http://stage.tynt.io/');
+	// }
 
-}
+// }
 
 ?>
 <!DOCTYPE html>
@@ -55,25 +60,17 @@ if ($_SERVER['REQUEST_URI'] == '/password/')
 			<div class="site-branding">
 				<?php if ( get_theme_mod('revive_logo') != "" ) : ?>
 				<div id="site-logo">
-					<a href="http://stage.tynt.io/blog/"><img src="<?php echo esc_url( get_theme_mod('revive_logo') ); ?>"></a>
+					<a href="<?php echo home_url('/blog') ?>"><img src="<?php echo esc_url( get_theme_mod('revive_logo') ); ?>"></a>
 				</div>
 				<?php endif; ?>
 				<div id="text-title-desc">
-				<h1 class="site-title title-font"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-				<form id="site-passwd-form" method="post" action="/password/">
-					<input type="password" id="passwd" name="passwd" value="<?php echo $passwd;?>" placeholder="What is your secret">
-					<input type="submit" name="submit" id="submit" value="Submit">
-				</form>
-				<?php
-					$passwd = $_POST["passwd"];
-					$_SESSION["site-passwd"] = $_POST["passwd"];
-					if (isset($passwd) && $passwd=="passtynt") :
-				?>
-		 		<script type="text/javascript">
-					window.location.href = "http://stage.tynt.io/"; 
-				</script>
-				<?php endif; ?>
+                    <h1 class="site-title title-font"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                    <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+                    <form id="site-passwd-form" method="post" action="/password/">
+                        <input type="password" id="passwd" name="passwd" value="<?php echo $passwd;?>" placeholder="What is your secret">
+                        <input type="hidden" name="onward" value="<?php echo htmlentities( wp_kses( $_GET['onward'] ) ) ?>">
+                        <button type="submit" name="submit" id="submit">Submit</button>
+                    </form>
 				</div>
 			</div>	
 		</div>	
@@ -97,5 +94,5 @@ if ($_SERVER['REQUEST_URI'] == '/password/')
 		<?php get_template_part('featured', 'area2'); ?>
 		
 		<?php get_template_part('slider', 'nivo' ); ?>
-<div id="back-top"><a href="#top"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/back-top.png"; ?>" height="100" width="100"></a></div>
+        <div id="back-top"><a href="#top"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/back-top.png"; ?>" height="100" width="100"></a></div>
 		<div id="content" class="site-content container">
