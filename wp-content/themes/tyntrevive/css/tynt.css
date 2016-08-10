@@ -55,18 +55,9 @@ z-index:1;
 /*##########################
 #password page
 ##########################*/
-#site-passwd-form {
-margin-top:36px;
-display: none;
-}
 
-.page-id-57 #site-passwd-form {
-display: block;
-}
+/* AY: There is no password page anymore */
 
-.page-id-57 .mega-container {
-display: none;
-}
 
 /*##########################
 #header

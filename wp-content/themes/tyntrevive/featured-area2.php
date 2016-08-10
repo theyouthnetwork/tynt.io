@@ -34,7 +34,8 @@
 							<span><?php the_time('Y'); ?></span></a></h2>
 					        <h2><a href="<?php the_permalink() ?>"><?php echo the_title(); ?></a></h2>
 					        
-            					<h2><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><span><?php echo get_avatar() ?></span>&nbsp&nbsp<?php the_author() ?></a></h2>
+                            <?php $author_id = get_the_author_meta( 'ID' ); ?>
+            					<h2><a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>"><span><?php echo get_avatar( $author_id ) ?></span> &nbsp;<?php the_author() ?></a></h2>
 					</div>
 				    	</div>	
 				        

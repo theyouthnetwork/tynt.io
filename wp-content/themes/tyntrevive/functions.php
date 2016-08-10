@@ -1,6 +1,10 @@
 <?php
-add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
+//
+// https://github.com/theyouthnetwork/tynt.io/wiki/Coding,-Style-Guide-and-TYNT-conventions 
+// 
+
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 function my_theme_enqueue_styles() {
     
     // Enqueue the style.css's, which provide meta info
@@ -23,7 +27,6 @@ function my_theme_enqueue_styles() {
 
 // Code from http://vanweerd.com/enhancing-your-wordpress-3-menus/#add_login
 add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2);
-
 function add_login_logout_link($items, $args) {
 
         // AY: Probably better to use wp_login_url() or wp_logout_url() ??
@@ -40,15 +43,13 @@ function add_login_logout_link($items, $args) {
 
 
 /**
- * Password checker hook. Checks for a password submission, and also determines
- * access to the page based on password or no.
- * Todo: abstract the page URI to be configuratble or something
- * Todo: store the password NOT IN PLAIN TEXT
+ * Password handler function to check for a submitted password, and 
+ * if correct then set it as a cookie
  */
-function tynt_password_check() {
+add_action( 'init', 'tynt_password_handler' );
+function tynt_password_handler() {
     
-    $is_correct_pass = !empty( $_COOKIE['site-passwd'] ) && $_COOKIE['site-passwd'] == 'passtynt';
-    $is_password_block_page = preg_match( '#/password/?#', $_SERVER['REQUEST_URI'] );    
+    $is_password_block_page = preg_match( '#/password/?#', $_SERVER['REQUEST_URI'] );
     
     // We will want to do a hard redirect, to avoid browser messages about double-posting.
     // Then redirect them to original destination, or if unknown go to homepage
@@ -61,8 +62,22 @@ function tynt_password_check() {
         wp_redirect( home_url( '/', 'https' ) );
         exit;
     }
+    
+}
+
+/**
+ * Determines access to the page based on if they are authenticated.
+ * Todo: abstract the page URI to be configuratble or something
+ * Todo: store the password NOT IN PLAIN TEXT
+ */
+add_action( 'posts_selection', 'tynt_password_check' );
+function tynt_password_check() {
         
-    if ( is_home() || is_single() || is_page() ){
+    $is_correct_pass = !empty( $_COOKIE['site-passwd'] ) && $_COOKIE['site-passwd'] == 'passtynt';
+    $is_password_block_page = preg_match( '#/password/?#', $_SERVER['REQUEST_URI'] );
+    
+        
+    if ( is_home() || is_single() || is_page() || is_404() ){
         
         if ( $is_correct_pass ){
             if ( $is_password_block_page ){
@@ -83,5 +98,34 @@ function tynt_password_check() {
     }
     
 }
-add_action( 'posts_selection', 'tynt_password_check' );
-// add_action( 'init', 'tynt_password_check' );
+
+
+
+/**
+ * Password page renderer. Will render nice stuff without 
+ * need for an underlying Page entry
+ */
+add_filter('template_redirect', 'tynt_render_password_page' );
+function tynt_render_password_page() {
+    global $wp_query;
+    $is_password_block_page = preg_match( '#/password/?#', $_SERVER['REQUEST_URI'] );
+    
+    if ($is_password_block_page) {
+        status_header( 200 );
+        $wp_query->is_404=false;
+        get_template_part( '403' );     // Corresponding template file is /403.php, edit that if you need
+        exit;
+    }
+}
+
+
+
+
+
+/***** INCLUDES *****/
+
+/**
+ * Custom template tags for this (child) theme.
+ */
+require get_stylesheet_directory() . '/inc/template-tags.php';
+
