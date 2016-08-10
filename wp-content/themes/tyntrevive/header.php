@@ -66,11 +66,13 @@
 				<div id="text-title-desc">
                     <h1 class="site-title title-font"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                     <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+                    <?php if ( ! tynt_is_authenticated() ): ?>
                     <form id="site-passwd-form" method="post" action="/password/">
-                        <input type="password" id="passwd" name="passwd" value="<?php echo $passwd;?>" placeholder="What is your secret">
-                        <input type="hidden" name="onward" value="<?php echo htmlentities( wp_kses( $_GET['onward'] ) ) ?>">
+                        <input type="password" id="passwd" name="passwd" placeholder="What is your secret">
+                        <input type="hidden" name="onward" value="<?php echo htmlentities( wp_kses( $_GET['onward'], [] ) ) ?>">
                         <button type="submit" name="submit" id="submit">Submit</button>
-                    </form>
+                    </form>         
+                    <?php endif; ?>
 				</div>
 			</div>	
 		</div>	
