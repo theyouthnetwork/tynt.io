@@ -73,19 +73,21 @@ function tynt_password_handler() {
 add_action( 'posts_selection', 'tynt_password_check' );
 function tynt_password_check() {
         
+    $is_valid_tynt_person = is_user_logged_in() && current_user_can( 'edit_posts' );
     $is_correct_pass = !empty( $_COOKIE['site-passwd'] ) && $_COOKIE['site-passwd'] == 'passtynt';
     $is_password_block_page = preg_match( '#/password/?#', $_SERVER['REQUEST_URI'] );
     
         
     if ( is_home() || is_single() || is_page() || is_404() ){
         
-        if ( $is_correct_pass ){
+        if ( $is_correct_pass || $is_valid_tynt_person ){
             if ( $is_password_block_page ){
                 // header('location:http://stage.tynt.io/');
                 wp_redirect( home_url( '/', 'https' ) );
                 exit;
             }
             else {
+                // Let them pass
                 return;       
             }
         }
@@ -122,10 +124,23 @@ function tynt_render_password_page() {
 
 
 
-/***** INCLUDES *****/
+
 
 /**
- * Custom template tags for this (child) theme.
+ ************************************************************
+ * Custom template tags for this theme.
+ ************************************************************
+ *
+ * @package tyntrevive
  */
-require get_stylesheet_directory() . '/inc/template-tags.php';
 
+if ( ! function_exists( 'tynt_is_authenticated' ) ) :
+/**
+ * Check whether visitor has applied the password
+ */
+function tynt_is_authenticated() {
+    $is_valid_tynt_person = is_user_logged_in() && current_user_can( 'edit_posts' );
+    $is_password_correct = !empty( $_COOKIE['site-passwd'] ) && $_COOKIE['site-passwd'] == 'passtynt';
+	return $is_valid_tynt_person || $is_password_correct;
+}
+endif;
