@@ -15,14 +15,14 @@ function my_theme_enqueue_styles() {
     // 1. Framework libraries e.g. Twitter Bootstrap
     // 2. Other libraries e.g. (dunno, what else is there??)
     // 3. TYNT custom CSS, compacted into a single file (and minified for production)
-    wp_enqueue_style( 'tynt-style', get_stylesheet_directory_uri() . '/css/tynt.css' );
+    wp_enqueue_style( 'tynt-style', get_stylesheet_directory_uri() . '/assets/css/tynt.css' );
     
     
     // Enqueue scripts here. Order should be:
     // 1. Framework Libraries e.g. Underscore (Note: jQuery is included in WP by default)
     // 2. Other libraries e.g. Slick slider, Google Maps, etc
     // 3. TYNT custom objects (must be js-namespaced as TYNT.something)
-    wp_enqueue_script('top-menu-script', get_stylesheet_directory_uri() . '/js/top-menu-update.js', array());
+    wp_enqueue_script('top-menu-script', get_stylesheet_directory_uri() . '/assets/js/top-menu-update.js', array());
 }
 
 // Code from http://vanweerd.com/enhancing-your-wordpress-3-menus/#add_login
@@ -123,9 +123,6 @@ function tynt_render_password_page() {
 
 
 
-
-
-
 /**
  ************************************************************
  * Custom template tags for this theme.
@@ -144,3 +141,8 @@ function tynt_is_authenticated() {
 	return $is_valid_tynt_person || $is_password_correct;
 }
 endif;
+
+
+// Include Password setting page
+include_once __DIR__ . '/inc/admin.php';
+
