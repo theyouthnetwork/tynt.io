@@ -5,7 +5,7 @@
  * @package revive
  */
 
-get_header(); ?>
+get_header('passwd');   ?>
 
 <!-- Request a password -->
 

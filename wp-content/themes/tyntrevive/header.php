@@ -49,7 +49,12 @@
 	<div id="top-bar">
 
 		<div class="container">
-			<div id="top-menu">
+				<?php if ( get_theme_mod('revive_logo') != "" ) : ?>
+				<div id="site-logo">
+					<a href="<?php echo home_url('/') ?>"><img src="<?php echo esc_url( get_theme_mod('revive_logo') ); ?>"></a>
+				</div>
+				<?php endif; ?>
+		<div id="top-menu">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 			</div>
 		</div>
@@ -58,11 +63,6 @@
 	<header id="masthead" class="site-header" role="banner">
 		<div class="container">
 			<div class="site-branding">
-				<?php if ( get_theme_mod('revive_logo') != "" ) : ?>
-				<div id="site-logo">
-					<a href="<?php echo home_url('/blog') ?>"><img src="<?php echo esc_url( get_theme_mod('revive_logo') ); ?>"></a>
-				</div>
-				<?php endif; ?>
 				<div id="text-title-desc">
                     <h1 class="site-title title-font"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                     <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
@@ -82,6 +82,8 @@
 				<span class="fa fa-search"></span>
 			</a>
 		</div>	
+		<div id="scroll-to-read"><a href="#articles"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/scroll.png"; ?>" height="40" width="40"></a></div>
+		<div id="scroll-text">SCROLL TO READ</div>
 		
 	</header><!-- #masthead -->
 	
@@ -96,5 +98,15 @@
 		<?php get_template_part('featured', 'area2'); ?>
 		
 		<?php get_template_part('slider', 'nivo' ); ?>
-        <div id="back-top"><a href="#top"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/back-top.png"; ?>" height="100" width="100"></a></div>
+<!--        <div id="back-top"><a href="#top"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/back-top.png"; ?>" height="100" width="100"></a></div>-->
+
+		<div id="share">
+		<div id="share-form">
+			<h1>Share your work and ideas.</h1>
+			<p id="share-para">The background image for the landing page of tynt.io changes every three weeks and we would love you feature any art, photography or illustrations that you may have**. We are also interested in hearing any ideas and stories you may have. Share your creations and/or ideas and watch it bloom.  </p>
+			<p id="footnote">**In submitting your work you agree to submit your work under the Common Grounds Zero. We will continue to provide full credit to you, however additional filters may be applied to align to the TYNT brand.</p>
+                        <button id="submit"><a href="mailto:theyouthnetwork@westpac.com.au">Submit an idea</a></button>
+		</div> 
+		</div>
+
 		<div id="content" class="site-content container">
