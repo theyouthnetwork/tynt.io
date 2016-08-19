@@ -14,11 +14,14 @@ display: none;
 
 @media (max-width: 768px) {
 #top-bar .container{
-position: absolute;
+position: fixed;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
 background:#FFFFFF !important;
 opacity:1 !important;
 width: 100% !important;
-top: 0;
 }
 #top-menu{
 background:#FFFFFF !important;
@@ -138,7 +141,7 @@ display: block;
 }
 
 #search-icon {
-display: none;
+display: none !important;
 }
 
 .page-id-69 #search-icon {
