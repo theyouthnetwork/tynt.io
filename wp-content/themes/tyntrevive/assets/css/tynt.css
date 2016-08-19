@@ -67,11 +67,11 @@ z-index:1;
 #header
 ##########################*/
 .page-id-10 .site-branding {
-margin-top: 240px;
+margin-top: 280px;
 }
 
 .page-id-2 .site-branding {
-margin-top: 240px;
+margin-top: 280px;
 }
 
 .site-branding {
@@ -81,6 +81,7 @@ margin-top: 240px;
 
 h1.site-title.title-font {
     font-family: Akkurat;
+    letter-spacing:2px;
 }
 
 
@@ -103,11 +104,12 @@ h2.site-description {
 
 #share {
 padding: 50px;
-background:#fcfcfc;
+background:#3e3935;
 }
 
 #share-form {
 text-align: center;
+color: #fcfcfc;
 max-width: 440px;
 margin:auto;
 }
@@ -166,6 +168,10 @@ background:#fcfcfc;
     padding-top: 0.3em;
     padding-bottom: 0.3em;
     text-shadow: none;
+}
+
+#submit a {
+color:#fff;
 }
 
 

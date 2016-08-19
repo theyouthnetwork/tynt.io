@@ -104,7 +104,9 @@
 		<div id="share-form">
 			<h1>Share your work and ideas.</h1>
 			<p id="share-para">The background image for the landing page of tynt.io changes every three weeks and we would love you feature any art, photography or illustrations that you may have**. We are also interested in hearing any ideas and stories you may have. Share your creations and/or ideas and watch it bloom.  </p>
+			<br></br>
 			<p id="footnote">**In submitting your work you agree to submit your work under the Common Grounds Zero. We will continue to provide full credit to you, however additional filters may be applied to align to the TYNT brand.</p>
+			<br></br>
                         <button id="submit"><a href="mailto:theyouthnetwork@westpac.com.au">Submit an idea</a></button>
 		</div> 
 		</div>
