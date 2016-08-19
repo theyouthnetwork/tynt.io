@@ -14,7 +14,8 @@ display: none;
 
 @media (max-width: 768px) {
 #top-bar .container{
-position: fixed;
+position: absolute;
+top:20;
 margin-left: auto;
 margin-right: auto;
 left: 0;
