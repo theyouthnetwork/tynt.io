@@ -42,7 +42,7 @@ DEFAULT_FILE='000-default.conf'
 DEFAULT_FILE_PATH="/etc/apache2/sites-available/$DEFAULT_FILE"
 RPROXY_FILE='github-listener-reverse-proxy.conf'
 RPROXY_FILE_PATH="$DIRNAME/../conf/$RPROXY_FILE"
-APACHE_CONF='/etc/apache2/'
+APACHE_CONF='/etc/apache2'
 APACHE_MODS_DROPIN_DIRNAME='mods-available'
 APACHE_MODS_ENABLED_DIRNAME='mods-enabled'
 APACHE_SITES_DROPIN_DIRNAME='sites-available'
@@ -59,6 +59,7 @@ echo -ne Drop in our reverse proxy, include it from main file...
 sudo sed -i.bak "s/<VirtualHost.*>/&\nInclude sites-available\/${RPROXY_FILE}/" "$DEFAULT_FILE_PATH"
 sudo rm -f "${DEFAULT_FILE_PATH}.bak"
 sudo cp "$RPROXY_FILE_PATH" "$APACHE_CONF/$APACHE_SITES_DROPIN_DIRNAME"
+sudo ln -s "../$APACHE_SITES_DROPIN_DIRNAME/$RPROXY_FILE" "$APACHE_CONF/$APACHE_SITES_ENABLED_DIRNAME/$RPROXY_FILE"
 echo Done.
 
 echo -ne Restart apache... 

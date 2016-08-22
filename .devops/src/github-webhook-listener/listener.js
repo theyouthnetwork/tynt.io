@@ -32,8 +32,6 @@
                             console.error('exec error: ' + error);
                             return;
                         }
-                        console.log('stdout: ' + stdout);
-                        console.log('stderr: ' + stderr);
                     });
                 }
                 

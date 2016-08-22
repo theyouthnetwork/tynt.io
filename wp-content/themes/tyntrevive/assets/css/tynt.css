@@ -15,8 +15,19 @@ display: none;
 @media (max-width: 768px) {
 #top-bar .container{
 position: absolute;
-top: 0;
+top:20;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+background:#FFFFFF !important;
+opacity:1 !important;
+width: 100% !important;
 }
+#top-menu{
+background:#FFFFFF !important;
+}
+
 }
 
 @media (min-width: 768px) {
@@ -26,8 +37,8 @@ margin-left: auto;
 margin-right: auto;
 left: 0;
 right: 0;
-background:#F2F2F2 !important;
-opacity:0.75 !important;
+background:#FFFFFF !important;
+opacity:1 !important;
 width: 100% !important;
 z-index:1;
 }
@@ -39,49 +50,87 @@ z-index:1;
 
 #top-menu ul li a {
     display: inline-block;
-    color: #36454f;
-    font-size: 14px;
+    color: #474747;
+    font-size: 22px;
     font-weight: normal;
     text-transform: uppercase;
 }
 
 #top-menu {
-    width: 270px;
-    float: none !important;
+    float: right !important;
     margin-left: auto;
     margin-right: auto;
+}
+
+#site-logo {
+    height: 100%;
+    margin-top: 10px;
 }
 
 /*##########################
 #password page
 ##########################*/
-#site-passwd-form {
-margin-top:36px;
-display: none;
-}
 
-.page-id-57 #site-passwd-form {
-display: block;
-}
+/* AY: There is no password page anymore */
 
-.page-id-57 .mega-container {
-display: none;
-}
 
 /*##########################
 #header
 ##########################*/
 .page-id-57 .site-branding {
-margin-top: 120px;
+margin-top: 280px;
 }
 
 .page-id-69 .site-branding {
-margin-top: 120px;
+margin-top: 280px;
 }
 
 .site-branding {
-    margin-bottom: 80px;
+    margin-bottom: 100px !important;
     padding:0px;
+}
+
+h1.site-title.title-font {
+    font-family: Akkurat;
+    letter-spacing:2px;
+}
+
+
+h2.site-description {
+  font-family: Akkurat;
+}
+
+#scroll-to-read {
+  width: 30px;
+  float: none;
+  margin:auto; 
+}
+
+#scroll-text {
+  color: #ffffff;
+  text-align: center;
+  font-weight: 300; 
+  margin: 15px 0px 30px 0px;
+}
+
+#share {
+padding: 50px;
+background:#3e3935;
+}
+
+#share-form {
+text-align: center;
+color: #fcfcfc;
+max-width: 440px;
+margin:auto;
+}
+
+#share-para {
+font-size:16px;
+}
+
+#footnote {
+font-size:12px;
 }
 
 #social-icons {
@@ -93,11 +142,11 @@ display: block;
 }
 
 #search-icon {
-display: none;
+display: none !important;
 }
 
 .page-id-69 #search-icon {
-display: block;
+display: none;
 }
 
 .single #masthead {
@@ -107,6 +156,35 @@ display: block;
 #masthead {
 background-position-y: center;
 }
+
+#page2 {
+background-color:#fcfcfc;
+}
+
+#passwd {
+background:#fcfcfc;
+}
+
+#submit {
+    border: #e55239;
+    border-color: #e55239 ;
+    border-radius: none;
+    background: #e55239;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    -webkit-appearance: button;
+    font-size: 14px;
+    line-height: none;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    text-shadow: none;
+}
+
+#submit a {
+color:#fff;
+}
+
 
 .page-id-57 #masthead {
 min-height: 640px;
@@ -132,6 +210,10 @@ display:none;
 
 #site-navigation {
 display: none;
+}
+
+#featured-area-2 {
+padding-bottom:30px;
 }
 
 #featured-area-2 .section-title {
@@ -178,9 +260,6 @@ max-height:480px;
 overflow:hidden;
 }
 
-/*##########################
-#articles header section
-##########################*/
 #primary-mono h1.entry-title {
     font-size: 35px;
     color: #3a3936;

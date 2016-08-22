@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
 if [ $# -eq 0 ]; then
-  echo ERROR: expect argument 1 to be the domain name
+  echo ERROR: Expect first argument to be the domain name
   exit 1
+fi
+
+## If there's an existing 'le' conf file, killit
+if [ -f /etc/apache2/conf-available/000-default-le-ssl.conf ]; then
+  sudo rm /etc/apache2/conf-available/000-default-le-ssl.conf
 fi
 
 mkdir -p ~/certbot

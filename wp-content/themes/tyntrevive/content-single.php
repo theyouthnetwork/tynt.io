@@ -4,8 +4,6 @@
  */
 ?>
 
-
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
@@ -15,7 +13,7 @@
 		<div class="entry-meta">
 			<div class="custom-date">
 			Words by
-			<span><?php echo get_avatar() ?></span>
+			<span><?php echo get_avatar(  get_the_author_meta( 'ID' ) ) ?></span>
             		<span class="author-name"><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php the_author() ?></a></span>
         		| Last edited
 			<span class="day"><?php the_time('j'); ?></span>

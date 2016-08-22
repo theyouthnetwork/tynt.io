@@ -31,6 +31,12 @@
 	
 	<div id="top-bar">
 		<div class="container">
+			<?php if ( get_theme_mod('revive_logo') != "" ) : ?>
+				<div id="site-logo">
+					<a href="<?php echo home_url('/') ?>"><img src="<?php echo esc_url( get_theme_mod('revive_logo') ); ?>"></a>
+				</div>
+			<?php endif; ?>
+
 			<div id="top-menu">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 			</div>
