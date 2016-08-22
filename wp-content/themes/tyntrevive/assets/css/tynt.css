@@ -4,6 +4,12 @@
     font-weight: normal; 
 }
 
+@font-face {
+    font-family: Akkurat; 
+    src: url(../fonts/Akkurat-Bold.otf); 
+    font-weight: bold; 
+}
+
 /*##########################
 #top-menu
 ##########################*/
