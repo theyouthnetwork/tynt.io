@@ -107,7 +107,7 @@
 			<br></br>
 			<p id="footnote">**In submitting your work you agree to submit your work under the Common Grounds Zero. We will continue to provide full credit to you, however additional filters may be applied to align to the TYNT brand.</p>
 			<br></br>
-                        <button id="submit"><a href="mailto:theyouthnetwork@westpac.com.au">Submit an idea</a></button>
+                        <button id="submit"><a href="mailto:youthnetworktimes@gmail.com">Submit an idea</a></button>
 		</div> 
 		</div>
 
